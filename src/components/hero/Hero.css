@@ -6,11 +6,11 @@
 }
 
 .hero {
-    color: white !important;
+    color: white;
     width: 100%;
     min-height: 100vh;
-    background-color: var(--color-bg) !important;
-    display: flex !important;
+    background-color: var(--color-bg);
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -82,8 +82,7 @@
     background-color: var(--color-bg);
 }
 
-
-/* .hero-text .connect-btn {
+.hero-text .connect-btn {
     margin-top: 36px;
     color: white;
     font-weight: 400;
@@ -93,7 +92,7 @@
     border: 2px solid rgb(86, 88, 226);
     border-radius: 30px;
     margin-left: 40px;
-} */
+}
 
 .hero-text .connect-btn .icon {
     color: black;

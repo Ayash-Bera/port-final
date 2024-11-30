@@ -1,7 +1,7 @@
 import React, { useState , useEffect } from 'react'
 import { Modal, ModalBody, Row } from "reactstrap"
-import heroImg from '../../assets/hero-img.png'
 import './Hero.css'
+
 
 const Hero = ({ web3, contract }) => {
     console.log('Hero component rendering');
@@ -30,7 +30,6 @@ const Hero = ({ web3, contract }) => {
                 setIsLoading(false);
             }
         };
-        
         fetchDescription();
     }, [contract])
 
@@ -65,18 +64,18 @@ const Hero = ({ web3, contract }) => {
         );
     }
 
-    if (error) {
-        return (
-            <section className="hero">
-                <div className="container">
-                    <div className="hero-text">
-                        <h3>Error: {error}</h3>
-                        <p>Please make sure your wallet is connected and you're on the correct network.</p>
-                    </div>
-                </div>
-            </section>
-        );
-    }
+    // if (error) {
+    //     return (
+    //         <section className="hero">
+    //             <div className="container">
+    //                 <div className="hero-text">
+    //                     <h3>Error: {error}</h3>
+    //                     <p>Please make sure your wallet is connected and you're on the correct network.</p>
+    //                 </div>
+    //             </div>
+    //         </section>
+    //     );
+    // }
 
     return (
         <section className="hero">
@@ -87,14 +86,12 @@ const Hero = ({ web3, contract }) => {
                 <h1>I develop decentralised apps in web3 space.</h1>
                 <h3>{description}</h3>
                 {/*  =========popup bootstrap==========  */}
-
                 <Modal size='md' isOpen={modal} toggle={() => setModal(!modal)}>
                     <ModalBody>
                             <Row className="text-align">
                                 <label htmlFor="" toggle={() => setModal(!modal)}>
                                     Mail Id - ayashbera@gmail.com
                                 </label>
-
                             </Row>
                     </ModalBody>
                 </Modal>
@@ -106,7 +103,8 @@ const Hero = ({ web3, contract }) => {
             <div className="hero-img">
 
                 <div className="img-container">
-                    <img src={heroImg} alt="profilePhoto" />
+                    
+                    <img src={`https://gateway.pinata.cloud/ipfs/${cid}`} alt="profilePhoto" />
                 </div>
             </div>
         </div>
