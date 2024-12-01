@@ -22,7 +22,7 @@ const Hero = ({ web3, contract }) => {
             try {
                 const descriptionText = await contract.methods.description().call();
                 console.log('Description fetched:', descriptionText);
-                setCid(descriptionText);
+                setDescription(descriptionText);
                 setIsLoading(false);
             } catch (error) {
                 console.error('Error fetching description:', error);
@@ -42,7 +42,7 @@ const Hero = ({ web3, contract }) => {
             try {
                 const imageCid = await contract.methods.imageLink().call();
                 console.log('Image CID fetched:', imageCid);
-                setDescription(imageCid);
+                setCid(imageCid);
             } catch (error) {
                 console.error('Error fetching image CID:', error);
                 setError(error.message);
@@ -96,7 +96,7 @@ const Hero = ({ web3, contract }) => {
                     </ModalBody>
                 </Modal>
 
-                <button className="msg-btn" onClick={() => setModal(true)}>I will touch you</button>
+                <button className="msg-btn" onClick={() => setModal(true)}>touch me</button>
                 {/*  =========popup bootstrap end==========  */}
 
             </div>
