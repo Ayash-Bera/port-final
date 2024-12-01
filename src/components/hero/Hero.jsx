@@ -16,6 +16,8 @@ const Hero = ({ web3, contract }) => {
             setError('Please connect your wallet first');
             setIsLoading(false);
             return;
+        } else {
+            setError(null);
         }
         
         const fetchDescription = async () => {
@@ -64,18 +66,18 @@ const Hero = ({ web3, contract }) => {
         );
     }
 
-    // if (error) {
-    //     return (
-    //         <section className="hero">
-    //             <div className="container">
-    //                 <div className="hero-text">
-    //                     <h3>Error: {error}</h3>
-    //                     <p>Please make sure your wallet is connected and you're on the correct network.</p>
-    //                 </div>
-    //             </div>
-    //         </section>
-    //     );
-    // }
+    if (error) {
+        return (
+            <section className="hero">
+                <div className="container">
+                    <div className="hero-text">
+                        <h3>Error: {error}</h3>
+                        <p>Please make sure your wallet is connected and you're on the correct network.</p>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 
     return (
         <section className="hero">
