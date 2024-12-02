@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import Hero from "./components/hero/Hero";
 import Wallet from "./components/Wallet/Wallet";
 import Handles from "./components/handles/Handles";
@@ -8,9 +8,22 @@ import Experience from "./components/experience/Experience";
 import Contact from "./components/contact/Contact";
 import "./index.css";
 function App() {
-  const [state, setState] = useState({
-    web3:null, contract:null
-  });
+  const [state, setState] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const contractState = await getContractState();
+        setState(contractState);
+      } catch (error) {
+        console.error("Error fetching contract state:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  console.log("State being passed to Contact:", state);
+
   const saveState = (state) => {
     console.log(state);
     setState(state);
@@ -23,7 +36,7 @@ function App() {
       <Projects {...state} />
       <Skills />
       <Experience state={state} />
-      <Contact {...state}/>
+      {state ? <Contact state={state} /> : <p>Loading...</p>}
       <Handles />
     </div>
   );
