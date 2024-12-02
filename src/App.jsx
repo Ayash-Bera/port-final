@@ -30,13 +30,13 @@ function App() {
   }
   return (
     <div className="App">
-      <Wallet saveState={saveState}/> 
-      <Hero {...state}/>
+      <Wallet saveState={saveState} />
+      <Hero {...state} />
       <Handles />
       <Projects {...state} />
       <Skills />
       <Experience state={state} />
-      {state ? <Contact state={state} /> : <p>Loading...</p>}
+      <Contact state={state} />
       <Handles />
     </div>
   );
