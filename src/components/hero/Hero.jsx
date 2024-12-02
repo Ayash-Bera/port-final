@@ -72,7 +72,7 @@ const Hero = ({ web3, contract }) => {
                 <div className="container">
                     <div className="hero-text">
                         <h3>Error: {error}</h3>
-                        <p>Please make sure your wallet is connected and you're on the correct network.</p>
+                        <p>Please make sure your wallet is connected and you're on the Fuji Testnet.</p>
                     </div>
                 </div>
             </section>

@@ -1,32 +1,71 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import { FaDonate } from 'react-icons/fa';
 import { Modal, ModalHeader, ModalBody, Row, Button } from "reactstrap"
-import img from "../../assets/img1.png"
 import "./Projects.css"
 
-const Projects = () => {
+const Projects = ({ contract }) => {
     const [modal, setModal] = useState(false);
+    const [projects, setProjects] = useState([]);
+
+    useEffect(() => {
+        const projectDetails = async () => {
+            try {
+                console.log("Attempting to fetch projects from contract...");
+                const projects = await contract.methods.allProjects().call();
+                console.log("Projects fetched:", projects);
+                setProjects(projects);
+            } catch (error) {
+                console.error("Error fetching projects:", error);
+            }
+        }
+
+        // const fetchProjects = async () => {
+        //     // Fetch projects initially
+        //     await projectDetails();
+        // };
+
+        // const subscribeToEvents = () => {
+        //     contract.events.allProjects()
+        //         .on('data', async (event) => {
+        //             console.log("Projects updated event received:", event);
+        //             await projectDetails(); // Fetch projects again after update
+        //         })
+        //         .on('error', console.error);
+        // };
+
+        // if (contract) {
+        //     fetchProjects();
+        //     subscribeToEvents();
+        // }
+        // checkl for these these are breaking the fucking code 
+
+        contract && projectDetails();
+    }, [contract])
     return (
         <section className="project-section">
             <h1 className="title">Projects </h1>
             <div className="card-wrapper">
-                 {[1,2,3].map((dummyValue)=>{
-                    return ( <a href= "#" className="project-card" target='_blank' rel="noopener noreferrer" >
-                    <div className="card-img">
-                        <img src={img} alt="" /></div>
-                    <div className="card-text">
-                        <h3>Dapp Name</h3>
-                        <p>Dapp Description</p>
-                    </div>
-                </a>)
-                })} 
-           
+                { projects.length > 0 ? (
+                    projects.map((project)=>{
+                        const githubLink = `https://github.com/Ayash-Bera/${project.github}`;
+                        return ( <a href= {githubLink} className="project-card" target='_blank' rel="noopener noreferrer" >
+                        <div className="card-img">
+                            <img src={`https://gateway.pinata.cloud/ipfs/${project.image}`} alt="" /></div>
+                        <div className="card-text">
+                            <h3>{project.name}</h3>
+                            <p>{project.description}</p>
+                        </div>
+                    </a>)
+                    })
+                ) : (
+                    <p>No projects available.</p>
+                )}
             </div>
  {/*  =========popup bootstrap==========  */}
 
  <Modal size='md' isOpen={modal} toggle={() => setModal(!modal)}>
                         <ModalHeader toggle={() => setModal(!modal)}>
-                            Enter the ETH you want to donate!
+                            Enter the amount you want to donate!
                         </ModalHeader>
                         <ModalBody>
                             <form >

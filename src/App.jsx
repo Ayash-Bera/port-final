@@ -20,10 +20,10 @@ function App() {
       <Wallet saveState={saveState}/> 
       <Hero {...state}/>
       <Handles />
-      <Projects state={state} />
+      <Projects {...state} />
       <Skills />
-      <Experience state={state}/>
-      <Contact state={state}/>
+      <Experience {...state}/>
+      <Contact {...state}/>
       <Handles />
     </div>
   );

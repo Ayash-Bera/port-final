@@ -49,7 +49,7 @@ const Wallet = ({ saveState }) => {
             // Initialize contract
             const contract = new web3.eth.Contract(
                 ABI, 
-                '0x6e6c5c82cb09f3af978089a97287338766a8aad9'
+                '0x6e6c5c82cb09f3af978089a97287338766a8aad9' // Contract address
             );
             console.log('Contract initialized:', contract);
 
