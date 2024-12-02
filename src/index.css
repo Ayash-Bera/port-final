@@ -4,8 +4,8 @@
     /* colors */
     --color-bg: #212121;
     --color-black: #131313;
-    --color-blue: #1A44F0;
-    --color-sky: #50B0F3;
+    --color-blue: #f01a1a;
+    --color-sky: #f35050;
     --color-card: #2c2d35;
 }
 
@@ -19,8 +19,8 @@
 :root {
     --font-family: 'Arial', sans-serif;
     /* or your preferred font */
-    --color-bg: #1a1a1a;
+    --color-bg: #000000;
     /* or your preferred background color */
-    --color-blue: #3d5af1;
+    --color-blue: #6cac96da;
     /* or your preferred blue color */
 }

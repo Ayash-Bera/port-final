@@ -22,7 +22,7 @@ function App() {
       <Handles />
       <Projects {...state} />
       <Skills />
-      <Experience {...state}/>
+      <Experience state={state} />
       <Contact {...state}/>
       <Handles />
     </div>
