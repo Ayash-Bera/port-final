@@ -11,6 +11,7 @@ const Wallet = ({ saveState }) => {
     const [connected, setConnected] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const isAndroid = /android/i.test(navigator.userAgent);
 
     const providerOptions = {
         walletconnect: {
@@ -91,6 +92,9 @@ const Wallet = ({ saveState }) => {
     return (
         <div className="wallet-container">
             <div className="header">
+                {isAndroid && <button className="connectBTN">
+                    <a href="https://metamask.app.link/dapp/sriche.netlify.app/">Click For Mobile</a>
+                </button> }
                 {error && <div className="error">{error}</div>}
                 <button 
                     className="connectBTN" 
